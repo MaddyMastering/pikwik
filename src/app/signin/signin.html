@@ -5,16 +5,17 @@
 
     <div class="content">
         <img class="logo" src="../../assets/images/logo-white.svg" />
-        <form action="home">
-            <input class="text" type="email" placeholder="Email" />
-            <input class="text" type="email" placeholder="Password" />
+        <form (ngSubmit)="signin()">
+            <input class="text" name="email" type="email" [(ngModel)]="user.email" placeholder="Email" required />
+            <input class="text" name="password" type="password" [(ngModel)]="user.password" placeholder="Password"
+                required />
             <br />
             <br />
-            <button class="button">Sign in</button>
+            <button tabindex="submit" class="button">Sign in</button>
         </form>
         <br />
-        <a routerLink="/forgot-password" >Forgot password ?</a>
+        <a routerLink="/forgot-password">Forgot password ?</a>
         <span></span>
-        <a routerLink="/register" >Sign up</a>
+        <a routerLink="/register">Sign up</a>
     </div>
 </ion-content>

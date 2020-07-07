@@ -9,8 +9,8 @@
             <img routerLink="/login" src="../../assets/images/close.svg" />
         </div>
         <p>We have mailed you passcode please enter to proceed</p>
-        <form action="home">
-            <input class="text" type="text" placeholder="CODE" />
+        <form (ngSubmit)="confirm()">
+            <input class="text" name="passcode" type="text" [(ngModel)]="user.code" placeholder="CODE" required />
             <br />
             <br />
             <button class="button">Confirm</button>

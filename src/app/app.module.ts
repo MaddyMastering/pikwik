@@ -14,6 +14,7 @@ import { ForgotPasswordPage } from './forgot-password/forgot-password';
 import { PasscodePage } from './passcode/passcode';
 import { RegisterPage } from './register/register';
 import { ConfirmationPage } from './confirmation/confirmation';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,12 @@ import { ConfirmationPage } from './confirmation/confirmation';
     AppComponent
   ],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
+  imports: [
+    BrowserModule, 
+    FormsModule,
+    IonicModule.forRoot(), 
+    AppRoutingModule
+  ],
   providers: [
     StatusBar,
     SplashScreen,
@@ -34,4 +40,4 @@ import { ConfirmationPage } from './confirmation/confirmation';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

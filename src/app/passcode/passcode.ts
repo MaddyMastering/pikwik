@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 
 @Component({
     selector: 'app-passcode',
@@ -7,6 +9,26 @@ import { Component } from '@angular/core';
 })
 export class PasscodePage {
 
-    constructor() { }
+    user = {
+        code: ''
+    };
+
+    constructor(
+        public router: Router,
+        public toastController: ToastController
+    ) { }
+
+    async presentToast() {
+        const toast = await this.toastController.create({
+            message: 'Passcode is invalid.',
+            duration: 2000
+        });
+        toast.present();
+    }
+
+    confirm() {
+        this.presentToast();
+        this.router.navigate(['home']);
+    }
 
 }
