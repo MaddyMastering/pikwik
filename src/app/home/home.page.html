@@ -1,20 +1,46 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="bg-primary">
+    <div class="header">
+      <img src="../../assets/images/menu.svg" />
+      <img class="logo" src="../../assets/images/logo-white.svg" />
+    </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <div class="bg"></div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <div class="content">
+      <form action="confirm">
+        <label>
+          <span>CITY</span>
+          <input class="text" type="text" placeholder="City" />
+        </label>
+
+        <label>
+          <span>FACILTY</span>
+          <input class="text" type="text" placeholder="Facility" />
+        </label>
+
+        <label>
+          <span>DATE</span>
+          <ion-datetime placeholder="Date Time" display-timezone="utc"></ion-datetime>
+        </label>
+
+        <label>
+          <span>FLOOR</span>
+          <ul class="floor">
+            <li>1</li>
+            <li class="active">2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+          </ul>
+        </label>
+
+        <br />
+        <br />
+        <button class="button primary">Book</button>
+      </form>
+    </div>
   </div>
 </ion-content>

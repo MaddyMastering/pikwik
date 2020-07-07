@@ -1,0 +1,34 @@
+.bg {
+  padding: 30px;
+  height: 45vh;
+
+  img {
+    position: absolute;
+    right: -55px;
+    height: 37vh;
+  }
+}
+
+.content {
+  padding: 30px 60px;
+  height: 55vh;
+  border-radius: 47px 47px 0 0;
+  background: var(--ion-primary-color);
+
+  .header {
+    display: grid;
+    grid-template-columns: 10fr 1fr;
+    height: 60px;
+    align-items: center;
+
+    div {
+      font-size: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+  }
+
+  form {
+    text-align: center;
+  }
+}

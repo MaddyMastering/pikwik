@@ -1,0 +1,35 @@
+.bg {
+  padding: 30px;
+  height: 45vh;
+
+  img {
+    position: absolute;
+    right: -55px;
+    height: 37vh;
+  }
+}
+
+.content {
+  padding: 30px 60px;
+  height: 55vh;
+  border-radius: 47px 47px 0 0;
+  text-align: center;
+  background: var(--ion-primary-color);
+
+  .logo {
+    margin-bottom: 40px;
+  }
+
+  a {
+    text-decoration: none;
+    color: white;
+  }
+
+  span {
+    height: 14px;
+    width: 3px;
+    background: rgba(255, 255, 255, 0.8);
+    display: inline-block;
+    margin: 0 15px;
+  }
+}

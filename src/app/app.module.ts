@@ -8,9 +8,23 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { HomePage } from './home/home.page';
+import { SignInPage } from './signin/signin.page';
+import { ForgotPasswordPage } from './forgot-password/forgot-password';
+import { PasscodePage } from './passcode/passcode';
+import { RegisterPage } from './register/register';
+import { ConfirmationPage } from './confirmation/confirmation';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    HomePage,
+    SignInPage,
+    ForgotPasswordPage,
+    PasscodePage,
+    RegisterPage,
+    ConfirmationPage,
+    AppComponent
+  ],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule],
   providers: [

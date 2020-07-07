@@ -1,0 +1,21 @@
+.bg {
+    background: var(--ion-primary-color);
+
+    img {
+        padding: 30px;
+        height: 50vh;
+        width: 100%;
+    }
+
+    .content {
+        font-size: 20px;
+        padding: 30px 60px;
+        height: 50vh;
+        border-radius: 47px 47px 0 0;
+        background-color: #fff;
+
+        form {
+            text-align: center;
+        }
+    }
+}
