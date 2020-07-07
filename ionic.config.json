@@ -1,0 +1,7 @@
+{
+  "name": "pikwik",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
