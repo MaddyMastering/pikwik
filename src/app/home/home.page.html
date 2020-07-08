@@ -1,13 +1,9 @@
 <ion-content>
   <div class="bg-primary">
+    <img class="logout-icon" (click)="logout()" src="../../assets/images/logout.svg" />
+
     <div class="header">
-      <img style="display: none;" src="../../assets/images/menu.svg" />
-      <div>
-        <img class="logo" src="../../assets/images/logo-white.png" />
-      </div>
-      <div style="display: flex;justify-content: flex-end;margin-bottom: 20px;">
-        <img (click)="logout()" src="../../assets/images/logout.svg" />
-      </div>
+      <img class="logo" src="../../assets/images/logo-white.png" />
     </div>
 
     <div class="bg"></div>
@@ -31,13 +27,18 @@
 
         <label>
           <span>FLOOR</span>
-          <ul class="floor">
-            <li>1</li>
-            <li class="active">2</li>
-            <li>3</li>
-            <li>4</li>
-            <li>5</li>
-          </ul>
+          <div class="scroll" scrollX="true">
+            <span>1</span>
+            <span class="active">2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
+          </div>
         </label>
 
         <br />

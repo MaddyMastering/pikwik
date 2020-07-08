@@ -1,16 +1,23 @@
 .bg-primary {
   background: var(--ion-primary-color);
-  
+
   .header {
     padding: 30px 30px 0px 30px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
   }
 
   .bg {
     background: url(../../assets/images/home-bg.svg);
     height: 20vh;
   }
+}
+
+.logout-icon {
+  position: absolute;
+  right: 20px;
+  top: 20px;
 }
 
 .content {
@@ -21,13 +28,13 @@
   z-index: 2;
 }
 
-.floor {
-  margin-block-start: 0;
+div[scrollx="true"] {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
 
-  li {
-    display: inline-block;
+  span {
     margin-right: 10px;
-    list-style: none;
     padding: 10px;
 
     &.active {
@@ -36,5 +43,12 @@
       border-radius: 50%;
       background: var(--ion-primary-color);
     }
+  }
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-item {
+    flex: 0 0 auto;
   }
 }
