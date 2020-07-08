@@ -30,7 +30,8 @@
 }
 
 .text,
-ion-datetime {
+ion-datetime,
+ion-select {
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
     border: none;
     outline: none;
@@ -45,6 +46,7 @@ ion-datetime {
     height: 50px;
     color: white;
     font-size: 18px;
+    outline: none;
     border-radius: 25px;
     background: rgba(0, 0, 0, 0.3);
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);

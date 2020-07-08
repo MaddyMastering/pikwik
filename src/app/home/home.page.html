@@ -12,32 +12,29 @@
       <form (ngSubmit)="book()">
         <label>
           <span>CITY</span>
-          <input class="text" type="text" placeholder="City" />
+          <ion-select name="city" [(ngModel)]="selected.city" placeholder="CITY">
+            <ion-select-option *ngFor="let city of cities" [value]="city">{{city}}</ion-select-option>
+          </ion-select>
         </label>
 
         <label>
           <span>FACILTY</span>
-          <input class="text" type="text" placeholder="Facility" />
+          <ion-select name="facility" [(ngModel)]="selected.facility" placeholder="FACILITY">
+            <ion-select-option *ngFor="let facility of facilities" [value]="facility">{{facility}}</ion-select-option>
+          </ion-select>
         </label>
 
         <label>
           <span>DATE</span>
-          <ion-datetime placeholder="Date" display-timezone="utc"></ion-datetime>
+          <ion-datetime name="date" [(ngModel)]="selected.date" placeholder="Date" display-timezone="utc">
+          </ion-datetime>
         </label>
 
         <label>
           <span>FLOOR</span>
           <div class="scroll" scrollX="true">
-            <span>1</span>
-            <span class="active">2</span>
-            <span>3</span>
-            <span>4</span>
-            <span>5</span>
-            <span>6</span>
-            <span>7</span>
-            <span>8</span>
-            <span>9</span>
-            <span>10</span>
+            <span [ngClass]="{'active': selected.floor === floor}" (click)="chooseFloor(floor)"
+              *ngFor="let floor of floors">{{floor}}</span>
           </div>
         </label>
 
