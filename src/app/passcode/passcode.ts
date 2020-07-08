@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { Subscription } from 'rxjs';
+import { Platform } from '@ionic/angular';
+
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,17 +11,20 @@ import { AuthService } from '../auth.service';
     templateUrl: 'passcode.html',
     styleUrls: ['passcode.scss'],
 })
-export class PasscodePage implements OnInit {
+export class PasscodePage implements OnInit, AfterViewInit, OnDestroy {
 
     user = {
         email: '',
         code: ''
     };
 
+    subscribe: Subscription;
+
     constructor(
         public activatedRoute: ActivatedRoute,
         public router: Router,
         public auth: AuthService,
+        public platform: Platform,
         public toastController: ToastController
     ) { }
 
@@ -26,6 +32,16 @@ export class PasscodePage implements OnInit {
         this.activatedRoute.params.subscribe(params => {
             this.user.email = params['emailId'];
         });
+    }
+
+    ngAfterViewInit() {
+        this.subscribe = this.platform.backButton.subscribeWithPriority(666666, () => {
+            window.history.back();
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscribe.unsubscribe();
     }
 
     async presentToast(message) {

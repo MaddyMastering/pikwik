@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, AfterContentInit, AfterViewInit } from '@angular/core';
 import { ToastController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+
 import { AuthService } from '../auth.service';
 
 @Component({
@@ -8,18 +11,33 @@ import { AuthService } from '../auth.service';
     templateUrl: 'signin.html',
     styleUrls: ['signin.scss'],
 })
-export class SignInPage {
+export class SignInPage implements AfterViewInit, OnDestroy {
 
     user = {
         email: '',
         password: ''
     };
 
+    subscribe: Subscription;
+
     constructor(
         public router: Router,
         public auth: AuthService,
+        public platform: Platform,
         public toastController: ToastController
     ) { }
+
+    ngAfterViewInit() {
+        this.subscribe = this.platform.backButton.subscribeWithPriority(0, () => {
+            if (window.confirm("Do you want to exit app ?")) {
+                navigator["app"].exitApp();
+            }
+        });
+    }
+
+    ngOnDestroy() {
+        this.subscribe.unsubscribe();
+    }
 
     async presentToast(message) {
         const toast = await this.toastController.create({

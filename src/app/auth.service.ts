@@ -14,27 +14,27 @@ export class AuthService {
     }
 
     login(email: string, password: string) {
-        return this.http.post('http://localhost:3000/auth/login', {
+        return this.http.post('https://pikwok.herokuapp.com/auth/login', {
             emailId: email,
             password: password
         }).toPromise();
     }
 
     register(email: string, password: string) {
-        return this.http.post('http://localhost:3000/auth/register', {
+        return this.http.post('https://pikwok.herokuapp.com/auth/register', {
             emailId: email,
             password: password
         }).toPromise();
     }
 
     forgotpassword(email: string) {
-        return this.http.post('http://localhost:3000/auth/forgot-password', {
+        return this.http.post('https://pikwok.herokuapp.com/auth/forgot-password', {
             emailId: email
         }).toPromise();
     }
 
     passcode(email: string, passcode: string) {
-        return this.http.post('http://localhost:3000/auth/passcode', {
+        return this.http.post('https://pikwok.herokuapp.com/auth/passcode', {
             emailId: email,
             passcode: passcode
         }).toPromise();

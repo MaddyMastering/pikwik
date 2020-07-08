@@ -3,9 +3,11 @@
   height: 45vh;
 
   img {
-    position: absolute;
-    right: -55px;
-    height: 37vh;
+    width: 100%;
+    height: auto;
+    // position: absolute;
+    // right: -55px;
+    // height: 37vh;
   }
 }
 
@@ -15,6 +17,7 @@
   border-radius: 47px 47px 0 0;
   text-align: center;
   background: var(--ion-primary-color);
+  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
 
   .logo {
     margin-bottom: 40px;
