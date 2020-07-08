@@ -1,7 +1,8 @@
 {
   "name": "pikwik",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
