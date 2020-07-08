@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-signin',
@@ -16,19 +17,29 @@ export class SignInPage {
 
     constructor(
         public router: Router,
+        public auth: AuthService,
         public toastController: ToastController
     ) { }
 
-    async presentToast() {
+    async presentToast(message) {
         const toast = await this.toastController.create({
-            message: 'Invalid username or password.',
+            message: message,
             duration: 2000
         });
         toast.present();
     }
 
     signin() {
-        this.presentToast();
-        this.router.navigate(['home']);
+        this.auth.login(this.user.email, this.user.password).then((resp: any) => {
+            if (resp.status === 200) {
+                this.auth.saveLoginUser('TRUE');
+                this.router.navigate(['home']);
+            } else if (resp.status === 404) {
+                this.presentToast(resp.error);
+            }
+        }).catch(err => {
+            console.error(err);
+            this.presentToast('We are sorry trouble at our end');
+        });
     }
 }

@@ -7,7 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, LoginGuard, UserGuard } from './app-routing.module';
 import { HomePage } from './home/home.page';
 import { SignInPage } from './signin/signin.page';
 import { ForgotPasswordPage } from './forgot-password/forgot-password';
@@ -15,6 +15,8 @@ import { PasscodePage } from './passcode/passcode';
 import { RegisterPage } from './register/register';
 import { ConfirmationPage } from './confirmation/confirmation';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AuthService } from './auth.service';
 
 @NgModule({
   declarations: [
@@ -30,13 +32,17 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule, 
     FormsModule,
+    HttpClientModule,
     IonicModule.forRoot(), 
     AppRoutingModule
   ],
   providers: [
+    AuthService,
+    LoginGuard,
     StatusBar,
     SplashScreen,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    UserGuard
   ],
   bootstrap: [AppComponent]
 })

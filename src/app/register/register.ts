@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
+import { AuthService } from '../auth.service';
 
 @Component({
     selector: 'app-register',
@@ -15,19 +16,28 @@ export class RegisterPage {
 
     constructor(
         public router: Router,
+        public auth: AuthService,
         public toastController: ToastController
     ) { }
 
-    async presentToast() {
+    async presentToast(message) {
         const toast = await this.toastController.create({
-            message: 'Account successfully created.',
+            message: message,
             duration: 2000
         });
         toast.present();
     }
 
     register() {
-        this.presentToast();
-        this.router.navigate(['passcode']);
+        this.auth.register(this.user.email, this.user.password).then((resp: any) => {
+            if (resp.status === 200) {
+                this.router.navigate(['passcode', this.user.email]);
+            } else {
+                this.presentToast(resp.error);
+            }
+        }).catch(err => {
+            console.error(err);
+            this.presentToast('We are sorry, trouble at our end');
+        });
     }
 }

@@ -1,8 +1,13 @@
 <ion-content>
   <div class="bg-primary">
     <div class="header">
-      <img src="../../assets/images/menu.svg" />
-      <img class="logo" src="../../assets/images/logo-white.svg" />
+      <img style="display: none;" src="../../assets/images/menu.svg" />
+      <div>
+        <img class="logo" src="../../assets/images/logo-white.svg" />
+      </div>
+      <div style="display: flex;justify-content: flex-end;margin-bottom: 20px;">
+        <img (click)="logout()" src="../../assets/images/logout.svg" />
+      </div>
     </div>
 
     <div class="bg"></div>
@@ -21,7 +26,7 @@
 
         <label>
           <span>DATE</span>
-          <ion-datetime placeholder="Date Time" display-timezone="utc"></ion-datetime>
+          <ion-datetime placeholder="Date" display-timezone="utc"></ion-datetime>
         </label>
 
         <label>
