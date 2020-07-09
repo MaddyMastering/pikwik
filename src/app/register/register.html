@@ -9,12 +9,13 @@
             <img routerLink="/login" src="../../assets/images/close.svg" />
         </div>
         <p></p>
-        <form (ngSubmit)="register()">
+        <form>
             <input class="text" name="email" type="email" [(ngModel)]="user.email" placeholder="Email" required />
-            <input class="text" name="password" type="password" [(ngModel)]="user.password" placeholder="Password" required />
+            <input class="text" name="password" type="password" [(ngModel)]="user.password" placeholder="Password"
+                required />
             <br />
             <br />
-            <button type="submit" class="button">Sign Up</button>
+            <button btnClickDebounce type="submit" class="button" (dbClick)="register()">Sign Up</button>
         </form>
     </div>
 </ion-content>

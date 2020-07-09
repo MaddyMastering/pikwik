@@ -45,6 +45,11 @@ export class ForgotPasswordPage implements AfterViewInit, OnDestroy {
     }
 
     forgotPassword() {
+        if (this.user.email.length <= 0) {
+            this.presentToast('Please enter email');
+            return;
+        }
+
         this.auth.forgotpassword(this.user.email).then((res: any) => {
             if (res.status === 200) {
                 this.router.navigate(['passcode', this.user.email]);

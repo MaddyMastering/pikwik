@@ -9,11 +9,11 @@
             <img routerLink="/login" src="../../assets/images/close.svg" />
         </div>
         <p>We have mailed you passcode please enter to proceed</p>
-        <form (ngSubmit)="confirm()">
+        <form>
             <input class="text" name="passcode" type="text" [(ngModel)]="user.code" placeholder="CODE" required />
             <br />
             <br />
-            <button class="button">Confirm</button>
+            <button btnClickDebounce (dbClick)="confirm()"  class="button">Confirm</button>
         </form>
     </div>
 </ion-content>

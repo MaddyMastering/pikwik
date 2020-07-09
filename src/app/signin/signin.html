@@ -5,13 +5,13 @@
 
     <div class="content">
         <img class="logo" src="../../assets/images/logo-white.png" />
-        <form (ngSubmit)="signin()">
+        <form>
             <input class="text" name="email" type="email" [(ngModel)]="user.email" placeholder="Email" required />
             <input class="text" name="password" type="password" [(ngModel)]="user.password" placeholder="Password"
                 required />
             <br />
             <br />
-            <button tabindex="submit" class="button">Sign in</button>
+            <button btnClickDebounce tabindex="submit" class="button" (dbClick)="signin()">Sign in</button>
         </form>
         <br />
         <a routerLink="/forgot-password">Forgot password ?</a>

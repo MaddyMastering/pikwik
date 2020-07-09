@@ -17,6 +17,7 @@ import { RegisterPage } from './register/register';
 import { ConfirmationPage } from './confirmation/confirmation';
 import { AuthService } from './auth.service';
 import { IdeasService } from './ideas.service';
+import { BtnClickDebounce } from './app.utils';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { IdeasService } from './ideas.service';
     PasscodePage,
     RegisterPage,
     ConfirmationPage,
+    BtnClickDebounce,
     AppComponent
   ],
   entryComponents: [],

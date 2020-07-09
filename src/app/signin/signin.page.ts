@@ -48,6 +48,16 @@ export class SignInPage implements AfterViewInit, OnDestroy {
     }
 
     signin() {
+        if (this.user.email.length <= 0) {
+            this.presentToast('Please enter email');
+            return;
+        }
+
+        if (this.user.password.length <= 0) {
+            this.presentToast('Please enter password');
+            return;
+        }
+
         this.auth.login(this.user.email, this.user.password).then((resp: any) => {
             if (resp.status === 200) {
                 this.auth.saveLoginUser('TRUE');

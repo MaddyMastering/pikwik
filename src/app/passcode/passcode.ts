@@ -53,6 +53,11 @@ export class PasscodePage implements OnInit, AfterViewInit, OnDestroy {
     }
 
     confirm() {
+        if (this.user.code.length <= 0) {
+            this.presentToast('Please enter passcode');
+            return;
+        }
+
         this.auth.passcode(this.user.email, this.user.code).then((res: any) => {
             if (res.status === 200) {
                 this.auth.saveLoginUser('TRUE');

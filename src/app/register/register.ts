@@ -45,6 +45,16 @@ export class RegisterPage implements AfterViewInit, OnDestroy {
     }
 
     register() {
+        if (this.user.email.length <= 0) {
+            this.presentToast('Please enter email');
+            return;
+        }
+
+        if (this.user.password.length <= 0) {
+            this.presentToast('Please enter password');
+            return;
+        }
+        
         this.auth.register(this.user.email, this.user.password).then((resp: any) => {
             if (resp.status === 200) {
                 this.router.navigate(['passcode', this.user.email]);

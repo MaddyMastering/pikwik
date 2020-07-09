@@ -11,7 +11,7 @@
     </div>
 
     <div class="content">
-      <form (ngSubmit)="book()">
+      <form>
         <label>
           <span>CITY</span>
           <ion-select name="city" [(ngModel)]="selected.city" placeholder="CITY" (ionChange)="onCitySelected()">
@@ -59,7 +59,7 @@
 
         <br />
         <br />
-        <button class="button primary">Book</button>
+        <button btnClickDebounce (dbClick)="book()"  class="button primary">Book</button>
       </form>
     </div>
   </div>
