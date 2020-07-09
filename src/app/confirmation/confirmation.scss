@@ -1,5 +1,6 @@
 .bg {
     background: var(--ion-primary-color);
+    text-align: center;
 
     img {
         padding: 30px;
@@ -8,9 +9,11 @@
     }
 
     .content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
         font-size: 20px;
         padding: 30px 60px;
-        height: 50vh;
         border-radius: 47px 47px 0 0;
         background-color: #fff;
         box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);

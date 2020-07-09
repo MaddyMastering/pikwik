@@ -6,7 +6,9 @@
       <img class="logo" src="../../assets/images/logo-white.png" />
     </div>
 
-    <div class="bg"></div>
+    <div class="bg">
+      <img src="../../assets/images/home-bg.svg" />
+    </div>
 
     <div class="content">
       <form (ngSubmit)="book()">
@@ -19,8 +21,10 @@
 
         <label>
           <span>FACILTY</span>
-          <ion-select name="facility" [(ngModel)]="selected.facility" placeholder="FACILITY"  (ionChange)="onFacilitySelected()">
-            <ion-select-option *ngFor="let facility of facilities" [value]="facility.facility">{{facility.facility}}</ion-select-option>
+          <ion-select name="facility" [(ngModel)]="selected.facility" placeholder="FACILITY"
+            (ionChange)="onFacilitySelected()">
+            <ion-select-option *ngFor="let facility of facilities" [value]="facility.facility">{{facility.facility}}
+            </ion-select-option>
           </ion-select>
         </label>
 

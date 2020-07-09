@@ -1,17 +1,19 @@
 .bg {
   padding: 30px;
   height: 45vh;
+  text-align: center;
 
   img {
-    // position: absolute;
-    // right: -55px;
-    // height: 37vh;
+    width: calc(100vh / 2.5);
+    height: auto;
   }
 }
 
 .content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   padding: 30px 60px;
-  height: 55vh;
   border-radius: 47px 47px 0 0;
   background: var(--ion-primary-color);
   box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
