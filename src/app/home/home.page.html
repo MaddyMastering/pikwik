@@ -12,15 +12,15 @@
       <form (ngSubmit)="book()">
         <label>
           <span>CITY</span>
-          <ion-select name="city" [(ngModel)]="selected.city" placeholder="CITY">
-            <ion-select-option *ngFor="let city of cities" [value]="city">{{city}}</ion-select-option>
+          <ion-select name="city" [(ngModel)]="selected.city" placeholder="CITY" (ionChange)="onCitySelected()">
+            <ion-select-option *ngFor="let city of cities" [value]="city.city">{{city.city}}</ion-select-option>
           </ion-select>
         </label>
 
         <label>
           <span>FACILTY</span>
-          <ion-select name="facility" [(ngModel)]="selected.facility" placeholder="FACILITY">
-            <ion-select-option *ngFor="let facility of facilities" [value]="facility">{{facility}}</ion-select-option>
+          <ion-select name="facility" [(ngModel)]="selected.facility" placeholder="FACILITY"  (ionChange)="onFacilitySelected()">
+            <ion-select-option *ngFor="let facility of facilities" [value]="facility.facility">{{facility.facility}}</ion-select-option>
           </ion-select>
         </label>
 
@@ -30,11 +30,11 @@
           </ion-datetime>
         </label>
 
-        <label>
+        <label *ngIf="floors.length > 0">
           <span>FLOOR</span>
           <div class="scroll" scrollX="true">
-            <span [ngClass]="{'active': selected.floor === floor}" (click)="chooseFloor(floor)"
-              *ngFor="let floor of floors">{{floor}}</span>
+            <span [ngClass]="{'active': selected.floor === floor.floor}" (click)="onFloorSelected(floor.floor)"
+              *ngFor="let floor of floors">{{floor.floor}}</span>
           </div>
         </label>
 

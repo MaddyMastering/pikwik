@@ -70,7 +70,7 @@ const routes: Routes = [
     canActivate: [UserGuard]
   },
   {
-    path: 'confirm',
+    path: 'confirm/:status',
     component: ConfirmationPage,
     canActivate: [LoginGuard]
   }

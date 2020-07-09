@@ -16,6 +16,7 @@ import { PasscodePage } from './passcode/passcode';
 import { RegisterPage } from './register/register';
 import { ConfirmationPage } from './confirmation/confirmation';
 import { AuthService } from './auth.service';
+import { IdeasService } from './ideas.service';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { AuthService } from './auth.service';
   providers: [
     AuthService,
     LoginGuard,
+    IdeasService,
     StatusBar,
     SplashScreen,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
