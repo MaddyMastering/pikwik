@@ -21,7 +21,11 @@ export class HomePage implements OnInit, OnDestroy {
     city: '',
     facility: '',
     floor: '',
-    date: ''
+    date: '',
+    checkbox: {
+      today: true,
+      tomorrow: true
+    }
   };
 
   subscribe: Subscription;
@@ -99,7 +103,11 @@ export class HomePage implements OnInit, OnDestroy {
         city: '',
         facility: '',
         floor: '',
-        date: ''
+        date: '',
+        checkbox: {
+          today: true,
+          tomorrow: true
+        }
       };
 
       if (resp.status === 200) {

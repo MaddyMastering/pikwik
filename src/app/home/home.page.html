@@ -28,19 +28,34 @@
           </ion-select>
         </label>
 
-        <label>
+        <!-- <label>
           <span>DATE</span>
           <ion-datetime name="date" [(ngModel)]="selected.date" placeholder="Date" display-timezone="utc">
           </ion-datetime>
-        </label>
+        </label> -->
 
-        <label *ngIf="floors.length > 0">
+        <label>
           <span>FLOOR</span>
           <div class="scroll" scrollX="true">
             <span [ngClass]="{'active': selected.floor === floor.floor}" (click)="onFloorSelected(floor.floor)"
               *ngFor="let floor of floors">{{floor.floor}}</span>
           </div>
+          <p *ngIf="floors.length <= 0">Select city and facility to display floors</p>
         </label>
+
+        <div class="checkbox">
+          <label class="container">
+            <input name="today" type="checkbox" [(ngModel)]="selected.checkbox.today">
+            <span class="checkmark"></span>
+            <span class="heading">TODAY</span>
+          </label>
+
+          <label class="container">
+            <input name="tomorrow" type="checkbox" [(ngModel)]="selected.checkbox.tomorrow">
+            <span class="checkmark"></span>
+            <span class="heading">TOMORROW</span>
+          </label>
+        </div>
 
         <br />
         <br />

@@ -26,7 +26,7 @@
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding: 30px 60px;
+  padding: 30px 50px;
   border-radius: 47px 47px 0 0;
   background: #fff;
   box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
@@ -43,10 +43,11 @@ div[scrollx="true"] {
     padding: 10px;
 
     &.active {
-      padding: 10px 16px;
-      color: #fff;
-      border-radius: 50%;
-      background: var(--ion-primary-color);
+      color: var(--ion-primary-color);
+      // padding: 10px 16px;
+      // color: #fff;
+      // border-radius: 50%;
+      // background: var(--ion-primary-color);
     }
   }
 
@@ -61,14 +62,10 @@ div[scrollx="true"] {
 .checkbox {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  label {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
+  padding-top: 10px;
 
-    span {
-      display: inline-block;
-      margin: 0 10px;
-    }
+  label {
+    display: block;
+    position: relative;
   }
 }
