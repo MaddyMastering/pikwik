@@ -17,12 +17,13 @@ export class IdeasService {
         return this.http.get('https://pikwok.herokuapp.com/idea/floors/' + city + '/' + facility).toPromise();
     }
 
-    confirmBooking(city: string, facility: string, date: string, floor: string) {
+    confirmBooking(city: string, facility: string, floor: string, today: boolean, tomorrow: boolean) {
         return this.http.post('https://pikwok.herokuapp.com/idea/book', {
             city: city,
             facility: facility,
-            date: new Date(date).getTime().toString(),
-            floor: floor
+            floor: floor,
+            requireToday: today,
+            requireTomorrow: tomorrow
         }).toPromise();
     }
 }

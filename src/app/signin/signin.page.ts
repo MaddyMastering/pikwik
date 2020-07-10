@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from '../auth.service';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 @Component({
     selector: 'app-signin',
@@ -24,10 +25,13 @@ export class SignInPage implements AfterViewInit, OnDestroy {
         public router: Router,
         public auth: AuthService,
         public platform: Platform,
+        public splashScreen: SplashScreen,
         public toastController: ToastController
     ) { }
 
     ngAfterViewInit() {
+        this.splashScreen.hide();
+
         this.subscribe = this.platform.backButton.subscribeWithPriority(0, () => {
             if (window.confirm("Do you want to exit app ?")) {
                 navigator["app"].exitApp();
@@ -62,6 +66,8 @@ export class SignInPage implements AfterViewInit, OnDestroy {
             if (resp.status === 200) {
                 this.auth.saveLoginUser('TRUE');
                 this.router.navigate(['home']);
+            } else if (resp.status === 406) {
+                this.router.navigate(['passcode', this.user.email]);
             } else if (resp.status === 404) {
                 this.presentToast(resp.error);
             }

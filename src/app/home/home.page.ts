@@ -1,17 +1,18 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Platform, ToastController } from '@ionic/angular';
 
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
 import { IdeasService } from '../ideas.service';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
 })
-export class HomePage implements OnInit, OnDestroy {
+export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   cities = [];
   facilities = [];
@@ -35,6 +36,7 @@ export class HomePage implements OnInit, OnDestroy {
     public platform: Platform,
     public auth: AuthService,
     public idea: IdeasService,
+    public splashScreen: SplashScreen,
     public toastController: ToastController
   ) {
     this.subscribe = this.platform.backButton.subscribeWithPriority(0, () => {
@@ -48,6 +50,10 @@ export class HomePage implements OnInit, OnDestroy {
     this.idea.getCities().then((resp: any) => {
       this.cities = resp.cities;
     });
+  }
+
+  ngAfterViewInit() {
+    this.splashScreen.hide();
   }
 
   ngOnDestroy() {
@@ -95,10 +101,10 @@ export class HomePage implements OnInit, OnDestroy {
     this.idea.confirmBooking(
       this.selected.city,
       this.selected.facility,
-      this.selected.date,
-      this.selected.floor
+      this.selected.floor,
+      this.selected.checkbox.today,
+      this.selected.checkbox.tomorrow
     ).then((resp: any) => {
-
       this.selected = {
         city: '',
         facility: '',
@@ -110,6 +116,8 @@ export class HomePage implements OnInit, OnDestroy {
         }
       };
 
+      this.floors = [];
+      
       if (resp.status === 200) {
         this.router.navigate(['confirm', 'SUCCESS']);
       } else {

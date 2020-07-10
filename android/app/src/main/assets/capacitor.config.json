@@ -1,6 +1,6 @@
 {
-  "appId": "com.example.pikwik",
-  "appName": "pikwik",
+  "appId": "com.example.piksit",
+  "appName": "piksit",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",

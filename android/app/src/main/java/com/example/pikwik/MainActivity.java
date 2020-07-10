@@ -1,4 +1,4 @@
-package com.example.pikwik;
+package com.example.piksit;
 
 import android.os.Bundle;
 

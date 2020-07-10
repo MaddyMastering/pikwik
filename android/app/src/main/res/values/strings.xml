@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">pikwik</string>
-    <string name="title_activity_main">pikwik</string>
-    <string name="package_name">com.example.pikwik</string>
-    <string name="custom_url_scheme">com.example.pikwik</string>
+    <string name="app_name">piksit</string>
+    <string name="title_activity_main">piksit</string>
+    <string name="package_name">com.example.piksit</string>
+    <string name="custom_url_scheme">com.example.piksit</string>
 </resources>

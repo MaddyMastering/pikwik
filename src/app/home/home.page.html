@@ -37,8 +37,8 @@
         <label>
           <span>FLOOR</span>
           <div class="scroll" scrollX="true">
-            <span [ngClass]="{'active': selected.floor === floor.floor}" (click)="onFloorSelected(floor.floor)"
-              *ngFor="let floor of floors">{{floor.floor}}</span>
+            <span [ngClass]="{'active': selected.floor === floor.idea_floor}" (click)="onFloorSelected(floor.idea_floor)"
+              *ngFor="let floor of floors">{{floor.idea_floor}}</span>
           </div>
           <p *ngIf="floors.length <= 0">Select city and facility to display floors</p>
         </label>
