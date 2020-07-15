@@ -64,7 +64,7 @@ export class SignInPage implements AfterViewInit, OnDestroy {
 
         this.auth.login(this.user.email, this.user.password).then((resp: any) => {
             if (resp.status === 200) {
-                this.auth.saveLoginUser('TRUE');
+                this.auth.saveLoginUser({ loggedIn: true, email: this.user.email });
                 this.router.navigate(['home']);
             } else if (resp.status === 406) {
                 this.router.navigate(['passcode', this.user.email]);

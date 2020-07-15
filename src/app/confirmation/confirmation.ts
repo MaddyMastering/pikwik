@@ -13,6 +13,8 @@ export class ConfirmationPage implements OnInit, AfterViewInit, OnDestroy {
     isSuccess = false;
     subscribe: Subscription;
 
+    successMessage = '';
+
     constructor(
         public activatedRoute: ActivatedRoute,
         public router: Router,
@@ -22,6 +24,7 @@ export class ConfirmationPage implements OnInit, AfterViewInit, OnDestroy {
     ngOnInit() {
         this.activatedRoute.params.subscribe(params => {
             if (params['status'] === 'SUCCESS') {
+                this.successMessage = `Your booking is successful with seat number ${params['seat']} and confirmation has sent to you mail.`;
                 this.isSuccess = true;
             } else {
                 this.isSuccess = false;

@@ -6,11 +6,16 @@ export class AuthService {
     constructor(private http: HttpClient) { }
 
     isLoggedIn() {
-        return localStorage.getItem('LOGIN');
+        const message = localStorage.getItem('LOGIN');
+        if (message) {
+            return JSON.parse(message);
+        }
+
+        return null;
     }
 
-    saveLoginUser(id: string) {
-        localStorage.setItem('LOGIN', id);
+    saveLoginUser(message: any) {
+        localStorage.setItem('LOGIN', JSON.stringify(message));
     }
 
     login(email: string, password: string) {

@@ -29,6 +29,8 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     }
   };
 
+  emailId = '';
+
   subscribe: Subscription;
 
   constructor(
@@ -47,6 +49,9 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit() {
+    const authData = this.auth.isLoggedIn();
+    this.emailId = authData.email;
+
     this.idea.getCities().then((resp: any) => {
       this.cities = resp.cities;
     });
@@ -103,7 +108,8 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       this.selected.facility,
       this.selected.floor,
       this.selected.checkbox.today,
-      this.selected.checkbox.tomorrow
+      this.selected.checkbox.tomorrow,
+      this.emailId
     ).then((resp: any) => {
       this.selected = {
         city: '',
@@ -119,9 +125,9 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       this.floors = [];
       
       if (resp.status === 200) {
-        this.router.navigate(['confirm', 'SUCCESS']);
+        this.router.navigate(['confirm', 'SUCCESS', resp.message.id]);
       } else {
-        this.router.navigate(['confirm', 'FAILURE'])
+        this.router.navigate(['confirm', 'FAILURE', ''])
       }
     }).catch(err => {
       console.error(err);

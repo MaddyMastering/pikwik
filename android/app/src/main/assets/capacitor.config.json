@@ -1,5 +1,5 @@
 {
-  "appId": "com.example.piksit",
+  "appId": "com.piksit.piksit",
   "appName": "piksit",
   "bundledWebRuntime": false,
   "npmClient": "npm",
