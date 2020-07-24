@@ -60,7 +60,7 @@ export class PasscodePage implements OnInit, AfterViewInit, OnDestroy {
 
         this.auth.passcode(this.user.email, this.user.code).then((res: any) => {
             if (res.status === 200) {
-                this.auth.saveLoginUser('TRUE');
+                this.auth.saveLoginUser({ loggedIn: true, user: res.message.user });
                 this.router.navigate(['home']);
             } else {
                 this.presentToast(res.error);

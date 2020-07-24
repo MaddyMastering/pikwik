@@ -5,6 +5,7 @@ import { ToastController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 
 import { AuthService } from '../auth.service';
+import { IdeasService } from '../ideas.service';
 
 @Component({
     selector: 'app-register',
@@ -14,8 +15,11 @@ import { AuthService } from '../auth.service';
 export class RegisterPage implements AfterViewInit, OnDestroy {
     user = {
         email: '',
-        password: ''
+        password: '',
+        organization: ''
     };
+
+    organizations = [];
 
     subscribe: Subscription;
 
@@ -23,6 +27,7 @@ export class RegisterPage implements AfterViewInit, OnDestroy {
         public router: Router,
         public auth: AuthService,
         public platform: Platform,
+        public idea: IdeasService,
         public toastController: ToastController
     ) { }
 
@@ -30,6 +35,10 @@ export class RegisterPage implements AfterViewInit, OnDestroy {
         this.subscribe = this.platform.backButton.subscribeWithPriority(666666, () => {
             window.history.back();
         });
+
+        this.idea.getOrganizations().then((res: any) => {
+            this.organizations = res;
+        })
     }
 
     ngOnDestroy() {
@@ -54,8 +63,13 @@ export class RegisterPage implements AfterViewInit, OnDestroy {
             this.presentToast('Please enter password');
             return;
         }
-        
-        this.auth.register(this.user.email, this.user.password).then((resp: any) => {
+
+        if (this.user.organization === '') {
+            this.presentToast('Please select organization');
+            return;
+        }
+
+        this.auth.register(this.user.email, this.user.password, this.user.organization).then((resp: any) => {
             if (resp.status === 200) {
                 this.router.navigate(['passcode', this.user.email]);
             } else {

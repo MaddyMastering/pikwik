@@ -26,10 +26,21 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     checkbox: {
       today: true,
       tomorrow: true
-    }
+    },
+    idea_uuid: ''
   };
 
-  emailId = '';
+  isCovidPerson = false;
+
+  user = {
+    organization_name: '',
+    organization_uuid: '',
+    user_emailId: '',
+    user_organizationUuid: '',
+    user_passcode: '',
+    user_password: '',
+    user_uuid: ''
+  };
 
   subscribe: Subscription;
 
@@ -50,9 +61,9 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   ngOnInit() {
     const authData = this.auth.isLoggedIn();
-    this.emailId = authData.email;
-
-    this.idea.getCities().then((resp: any) => {
+    this.user = authData.user;
+    
+    this.idea.getCities(this.user.user_organizationUuid).then((resp: any) => {
       this.cities = resp.cities;
     });
   }
@@ -75,7 +86,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   onCitySelected() {
     if (this.selected.city != '') {
-      this.idea.getFacilites(this.selected.city).then((resp: any) => {
+      this.idea.getFacilites(this.user.user_organizationUuid, this.selected.city).then((resp: any) => {
         this.facilities = resp.facilities;
         this.floors = [];
         this.selected.facility = '';
@@ -86,15 +97,16 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   onFacilitySelected() {
     if (this.selected.city != '' && this.selected.facility != '') {
-      this.idea.getFloors(this.selected.city, this.selected.facility).then((resp: any) => {
+      this.idea.getFloors(this.user.user_organizationUuid, this.selected.city, this.selected.facility).then((resp: any) => {
         this.floors = resp.floors;
         this.selected.floor = '';
       });
     }
   }
 
-  onFloorSelected(floor: string) {
-    this.selected.floor = floor;
+  onFloorSelected(floor: any) {
+    this.selected.floor = floor.idea_floor;
+    this.selected.idea_uuid = floor.idea_uuid;
   }
 
   logout() {
@@ -103,13 +115,26 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   }
 
   book() {
+    if (!this.selected.city) {
+      this.presentToast('Please select city');
+      return;
+    }
+
+    if (!this.selected.facility) {
+      this.presentToast('Please select facility');
+      return;
+    }
+
+    if (!this.selected.floor) {
+      this.presentToast('Please select floor');
+      return;
+    }
+
     this.idea.confirmBooking(
-      this.selected.city,
-      this.selected.facility,
-      this.selected.floor,
+      this.selected.idea_uuid,
       this.selected.checkbox.today,
       this.selected.checkbox.tomorrow,
-      this.emailId
+      this.user.user_emailId
     ).then((resp: any) => {
       this.selected = {
         city: '',
@@ -119,11 +144,12 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
         checkbox: {
           today: true,
           tomorrow: true
-        }
+        },
+        idea_uuid: ''
       };
 
       this.floors = [];
-      
+
       if (resp.status === 200) {
         this.router.navigate(['confirm', 'SUCCESS', resp.message.id]);
       } else {

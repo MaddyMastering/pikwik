@@ -26,6 +26,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 @import "./assets/checkbox.scss";
+@import "./assets/switch.scss";
 
 :root {
     --ion-primary-color: #3dcd58;
@@ -56,6 +57,11 @@ ion-select {
 
 button.primary {
     background: var(--ion-primary-color);
+}
+
+button[disabled] {
+  pointer-events: none;
+  background: rgba(0, 0, 0, 0.5) !important;
 }
 
 form {

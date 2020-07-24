@@ -25,10 +25,11 @@ export class AuthService {
         }).toPromise();
     }
 
-    register(email: string, password: string) {
+    register(email: string, password: string, organization: string) {
         return this.http.post('https://pikwok.herokuapp.com/auth/register', {
             emailId: email,
-            password: password
+            password: password,
+            organization: organization
         }).toPromise();
     }
 

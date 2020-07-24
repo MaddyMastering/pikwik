@@ -5,23 +5,25 @@ import { HttpClient } from '@angular/common/http';
 export class IdeasService {
     constructor(private http: HttpClient) { }
 
-    getCities() {
-        return this.http.get('https://pikwok.herokuapp.com/idea/cities').toPromise();
+    getOrganizations() {
+        return this.http.get('https://pikwok.herokuapp.com/idea/organizations').toPromise();
     }
 
-    getFacilites(city: string) {
-        return this.http.get('https://pikwok.herokuapp.com/idea/facilities/' + city).toPromise();
+    getCities(organizationId: any) {
+        return this.http.get('https://pikwok.herokuapp.com/idea/cities/' + organizationId).toPromise();
     }
 
-    getFloors(city: string, facility: string) {
-        return this.http.get('https://pikwok.herokuapp.com/idea/floors/' + city + '/' + facility).toPromise();
+    getFacilites(organizationId: any, city: string) {
+        return this.http.get('https://pikwok.herokuapp.com/idea/facilities/' + organizationId + '/' + city).toPromise();
     }
 
-    confirmBooking(city: string, facility: string, floor: string, today: boolean, tomorrow: boolean, email: string) {
+    getFloors(organizationId: any, city: string, facility: string) {
+        return this.http.get('https://pikwok.herokuapp.com/idea/floors/' + organizationId + '/' + city + '/' + facility).toPromise();
+    }
+
+    confirmBooking(id: string, today: boolean, tomorrow: boolean, email: string) {
         return this.http.post('https://pikwok.herokuapp.com/idea/book', {
-            city: city,
-            facility: facility,
-            floor: floor,
+            id: id,
             requireToday: today,
             requireTomorrow: tomorrow,
             emailId: email

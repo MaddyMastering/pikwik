@@ -64,13 +64,13 @@ export class SignInPage implements AfterViewInit, OnDestroy {
 
         this.auth.login(this.user.email, this.user.password).then((resp: any) => {
             if (resp.status === 200) {
-                this.auth.saveLoginUser({ loggedIn: true, email: this.user.email });
+                this.auth.saveLoginUser({ loggedIn: true, user: resp.message.user });
                 this.router.navigate(['home']);
             } else if (resp.status === 406) {
                 this.router.navigate(['passcode', this.user.email]);
             } else if (resp.status === 404) {
                 this.presentToast(resp.error);
-            }
+            } 
         }).catch(err => {
             console.error(err);
             this.presentToast('We are sorry trouble at our end');

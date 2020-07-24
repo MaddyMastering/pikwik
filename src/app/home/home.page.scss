@@ -23,7 +23,7 @@
 }
 
 .content {
-  position: absolute;
+  // position: absolute;
   bottom: 0;
   width: 100%;
   padding: 30px 50px;
@@ -31,6 +31,12 @@
   background: #fff;
   box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
   z-index: 2;
+  overflow: scroll;
+
+  // .question {
+  //   display: inline-block;
+  //   width: 60vw;
+  // }
 }
 
 div[scrollx="true"] {

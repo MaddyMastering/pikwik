@@ -37,12 +37,14 @@
         <label>
           <span>FLOOR</span>
           <div class="scroll" scrollX="true">
-            <span [ngClass]="{'active': selected.floor === floor.idea_floor}" (click)="onFloorSelected(floor.idea_floor)"
-              *ngFor="let floor of floors">{{floor.idea_floor}}</span>
+            <span [ngClass]="{'active': selected.floor === floor.idea_floor}"
+              (click)="onFloorSelected(floor)" *ngFor="let floor of floors">{{floor.idea_floor}}</span>
           </div>
           <p *ngIf="floors.length <= 0">Select city and facility to display floors</p>
         </label>
 
+        <br />
+        <span><strong>DATE</strong></span>
         <div class="checkbox">
           <label class="container">
             <input name="today" type="checkbox" [(ngModel)]="selected.checkbox.today">
@@ -58,8 +60,16 @@
         </div>
 
         <br />
+        <p class="question">Do you have COVID symptoms ?</p>
+        <label class="switch">
+          <input name="isCovidPerson" type="checkbox" [(ngModel)]="isCovidPerson">
+          <span class="slider round"></span>
+        </label>
+
         <br />
-        <button btnClickDebounce (dbClick)="book()"  class="button primary">Book</button>
+        <br />
+        <br />
+        <button btnClickDebounce (dbClick)="book()" [disabled]="isCovidPerson" class="button primary">Book</button>
       </form>
     </div>
   </div>
